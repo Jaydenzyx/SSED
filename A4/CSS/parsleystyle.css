@@ -33,19 +33,6 @@ form#formData {
     position: relative;
 }
 
-/* auffällige linke Leiste mit Diagonale via Pseudo-Element */
-form#formData::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    background: linear-gradient(180deg, #ffb366, #ff6b6b);
-    transform: skewX(-12deg);
-    transform-origin: left;
-    box-shadow: inset -20px 0 40px rgba(255, 255, 255, 0.06);
-}
 
 /* Form-Inhalt eingerückt damit Leiste nicht überlappt */
 form#formData>div {

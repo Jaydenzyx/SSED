@@ -26,25 +26,26 @@ $(function() {
         }
     });
 
-    window.Parsley.addValidator('filemaxsize', {
-        requirementType: 'integer',
-        validateString: (value, size, el) => {
-            if (!window.FormData) return true;
-            const f = el.$element[0].files;
-            if (!f.length) return true;
-            return f[0].size <= size;
-        },
-        messages: { de: 'Datei zu groß (max. %s Bytes).' }
-    });
-
-    window.Parsley.addValidator('filetype', {
-        requirementType: 'string',
-        validateString: (value, types, el) => {
-            const f = el.$element[0].files;
-            if (!f.length) return true;
-            const allowed = types.split(',');
-            return allowed.includes(f[0].type);
-        },
-        messages: { de: 'Nicht unterstützter Dateityp.' }
-    });
+   window.Parsley.addValidator('filemaxsize', {
+    requirementType: 'integer',
+    validateString: (value, maxSize, el) => {
+        const files = el.$element[0].files;
+        if (!files.length) return true;
+        return files[0].size/1024/1024 <= maxSize;
+    },
+    messages: { de: 'Datei zu groß (max. %s Bytes).' }
 });
+
+window.Parsley.addValidator('filetype', {
+        requirementType: 'string',
+        validateString: function(value, type, parsleyInstance) {
+            const files = parsleyInstance.$element[0].files;
+            if (files.length === 0) return true;
+            const allowedExtensions = type.split(',').map(t => t.trim().toLowerCase());
+            const fileExt = files[0].name.split('.').pop().toLowerCase();
+            return allowedExtensions.includes('.' + fileExt);
+        },
+        messages: {
+            en: 'Ungültiger Dateityp. Nur: %s erlaubt.'
+        }
+    });

@@ -47,7 +47,8 @@
 
     <div>
       <label for="file">Datei:</label>
-      <input type="file" id="file" name="file" required>
+      <input type="file" id="file" name="file" required data-parsley-filemaxsize="5"
+        data-parsley-filemimetypes="image/jpeg, image/png, application/pdf">
     </div>
 
     <button type="submit">Senden</button>

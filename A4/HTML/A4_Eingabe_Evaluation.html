@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation mit Parsley</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/src/parsley.css">
+  <link rel="stylesheet" href="../CSS/parsleystyle.css">
+</head>
+
+<body>
+
+  <h2>Überprüfungsformular</h2>
+
+  <form id="formData">
+    <div>
+      <label for="txt">Text:</label>
+      <input type="text" id="txt" name="txt" placeholder="Text hier..." required data-parsley-length="[2,50]">
+    </div>
+
+    <div>
+      <label for="mail">E-Mail:</label>
+      <input type="email" id="mail" name="mail" placeholder="mail@example.com" required>
+    </div>
+
+    <div>
+      <label for="pw">Passwort:</label>
+      <input type="password" id="pw" name="pw" placeholder="mind. 6 Zeichen" required data-parsley-minlength="6">
+    </div>
+
+    <div>
+      <label for="phone">Telefon:</label>
+      <input type="tel" id="phone" name="phone" placeholder="+43 660 1234567" required
+        data-parsley-pattern="^\+?[0-9\s\-]{7,20}$">
+    </div>
+
+    <div>
+      <label for="link">Website:</label>
+      <input type="url" id="link" name="link" placeholder="https://seite.at" required>
+    </div>
+
+    <div>
+      <label for="query">Suche:</label>
+      <input type="search" id="query" name="query" placeholder="Suchbegriff..." required>
+    </div>
+
+    <div>
+      <label for="file">Datei:</label>
+      <input type="file" id="file" name="file" required>
+    </div>
+
+    <button type="submit">Senden</button>
+  </form>
+
+  <section id="result"></section>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
+  <script src="../Javascript/A4_Eingabe_Evaluation.js"></script>
+</body>
+
+</html>

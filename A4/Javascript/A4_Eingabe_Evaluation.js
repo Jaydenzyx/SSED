@@ -26,6 +26,8 @@ $(function() {
         }
     });
 
+//w
+
    window.Parsley.addValidator('filemaxsize', {
     requirementType: 'integer',
     validateString: (value, maxSize, el) => {

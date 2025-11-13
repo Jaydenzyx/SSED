@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/src/parsley.css">
   <link rel="stylesheet" href="../CSS/parsleystyle.css">
 </head>
-
 <body>
-
   <h2>Überprüfungsformular</h2>
 
   <form id="formData">
@@ -26,13 +23,12 @@
 
     <div>
       <label for="pw">Passwort:</label>
-      <input type="password" id="pw" name="pw" placeholder="mind. 6 Zeichen" required data-parsley-minlength="6">
+      <input type="password" id="pw" name="pw" required data-parsley-minlength="8" data-parsley-pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&amp;*]).{8,}$" data-parsley-pattern-message="Muss mind. 8 Zeichen, 1 Großbuchstabe, 1 Zahl &amp; 1 Sonderzeichen enthalten" placeholder="Passwort">
     </div>
 
     <div>
       <label for="phone">Telefon:</label>
-      <input type="tel" id="phone" name="phone" placeholder="+43 660 1234567" required
-        data-parsley-pattern="^\+?[0-9\s\-]{7,20}$">
+      <input type="tel" id="phone" name="phone" placeholder="+43 660 1234567" required data-parsley-pattern="^\+?[0-9\s\-]{7,20}$">
     </div>
 
     <div>
@@ -47,8 +43,7 @@
 
     <div>
       <label for="file">Datei:</label>
-      <input type="file" id="file" name="file" required data-parsley-filemaxsize="5"
-        data-parsley-filemimetypes="image/jpeg, image/png, application/pdf">
+      <input type="file" id="file" name="file" required data-parsley-filemaxsize="5" data-parsley-filemimetypes="image/jpeg, image/png, application/pdf">
     </div>
 
     <button type="submit">Senden</button>
@@ -58,7 +53,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
   <script src="../Javascript/A4_Eingabe_Evaluation.js"></script>
 </body>
-
 </html>
